@@ -2,6 +2,7 @@ use crate::bluesky_client::FetchedPost;
 use gemini_rust::prelude::*;
 use std::env;
 
+// TODO: probably needs a post cutoff to prevent overflowing context window
 pub fn format_prompt(posts: &[FetchedPost]) -> String {
     let mut prompt = String::from(
         "Summarize the following Bluesky timeline posts into the top 5 most discussed topics. Format it as a numbered list with a short description for each topic.\nUse reposts to help sort the recurring themes, and use likes as a potential lightly weighted filtering mechanism.\n\n",

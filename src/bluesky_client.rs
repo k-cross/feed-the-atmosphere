@@ -69,6 +69,7 @@ pub async fn fetch_recent_posts(
 
     loop {
         let (feed_items, next_cursor) = if feed_uri == "following" || feed_uri.is_empty() {
+            // TODO: should make params mutable and create once and only update the cursor
             let params = atrium_api::app::bsky::feed::get_timeline::ParametersData {
                 algorithm: None,
                 cursor: cursor.clone(),
